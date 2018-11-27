@@ -6,14 +6,15 @@ imgflip is a very small python program. It uses OpenCV to load images and access
 
 # SYNOPSIS:
 
-`imgflip -[v,h,r,l,r] [INPUT_IMAGE] [OUTPUT_IMAGE]`
+`imgflip -[h,v,r,l,r] [INPUT_IMAGE] [OUTPUT_IMAGE]`
 
 ## You can chain these commands in order.
-- `-v` to mirror the image vertically
 - `-h` to mirror the image horizontally
+- `-v` to mirror the image vertically
 - `-r` to rotate 90 degrees to the left (clockwise)
 - `-l` to rotate 90 degrees to the right (counter clockwise)
 - `-a` to rotate 180 degrees
+- `--help` to print the help message (this one)
 
 # EXAMPLE:
 Mirror the image horizontally and then rotate it 90 degrees to the right (clockwise).
