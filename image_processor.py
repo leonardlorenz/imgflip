@@ -1,9 +1,11 @@
 import numpy as np
 import cv2 as cv
 
-class image_processor(input_path, output_path):
+class image_processor():
 
-    def image_processor(self, do_mirror_horizontal, do_mirror_vertical, do_rotate_90, do_rotate_minus_90, do_rotate_180):
+    def image_processor(self, input_path, output_path, do_mirror_horizontal, do_mirror_vertical, do_rotate_90, do_rotate_minus_90, do_rotate_180):
+        self.input_path = input_path
+        self.output_path = output_path
         self.do_mirror_horizontal = do_mirror_horizontal
         self.do_mirror_vertical = do_mirror_vertical
         self.do_rotate_90 = do_rotate_90
@@ -13,7 +15,7 @@ class image_processor(input_path, output_path):
     def process_image(self):
         img = cv.imread(input_path)
         if self.do_mirror_horizontal == True:
-            img = mirror_horizontal(img):
+            img = mirror_horizontal(img)
         if self.do_mirror_vertical == True:
             img = mirror_vertical(img)
         if self.do_rotate_90== True:
@@ -52,9 +54,9 @@ class image_processor(input_path, output_path):
         return output_img
 
     def rotate_90(img):
-        continue
+        print("nothing")
     def rotate_minus_90(img):
-        continue
+        print("nothing")
     def rotate_180(img):
-        continue
+        print("nothing")
 
