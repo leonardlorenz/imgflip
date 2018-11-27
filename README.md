@@ -4,7 +4,7 @@ imgflip is a small program that flips and mirrors images. The goal is to make it
 # How does it do that?
 imgflip is a very small python program. It uses OpenCV to load images and to access their pixel values.
 
-# SYNOPSIS:
+# Synopsis:
 
 `imgflip -[h,v,r,l,r] [INPUT_IMAGE] [OUTPUT_IMAGE]`
 
@@ -16,7 +16,7 @@ imgflip is a very small python program. It uses OpenCV to load images and to acc
 - `-a` to rotate 180 degrees
 - `--help` to print the help message (this one)
 
-# EXAMPLES:
+# Examples:
 Mirror the image horizontally and then rotate it 90 degrees to the right (clockwise).\
 `imgflip -hr`\
 Mirror the image vertically and then rotate it 180 degrees.\
