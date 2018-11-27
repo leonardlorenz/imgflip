@@ -21,6 +21,7 @@ def main():
 
         if sys.argv[1].startswith("-"):
             input_path = sys.argv[2]
+            output_path = sys.argv[3]
             options = sys.argv[1].strip("-")
             for i in range(0, len(options)):
                 # mirror image
@@ -36,10 +37,15 @@ def main():
                     do_rotate_180 = True
                 if options[i] == "h":
                     print_help()
+                    sys.exit(0)
+
         processor = image_processor.image_processor(
-                input_path, output_path,
-                do_mirror_horizontal, do_mirror_vertical,
-                do_rotate_90, do_rotate_minus_90,
+                input_path,
+                output_path,
+                do_mirror_horizontal,
+                do_mirror_vertical,
+                do_rotate_90,
+                do_rotate_minus_90,
                 do_rotate_180)
         processor.process_image()
 
@@ -54,7 +60,7 @@ def print_help():
     print("\t-a to rotate 180 degrees")
     print("\nEXAMPLE:")
     print("\tMirror the image horizontally and then rotate it 90 degrees to the right (clockwise).")
-    print("\timgflip -hr")
+    print("\timgflip -hr\n")
 
 if __name__ == "__main__":
     main()
