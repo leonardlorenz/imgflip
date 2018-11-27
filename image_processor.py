@@ -40,43 +40,66 @@ class image_processor():
         print("Wrote flipped image to " + self.output_path)
 
     def mirror_horizontal(self, img):
+        """
+        FINAL
+        img[x,y]
+        output_img[i,j]
+        iterator directions:
+        +x ^ +y = +i ^ -j
+        """
         height, width, channels = img.shape
-        output_img = np.zeros((width, height, channels), np.uint8)
-        x = 0
-        for i in range(0, width):
-            y = height - 1
-            for j in range(0, height):
-                output_img[i,j] = img[x,y]
-                y -= 1
-            x += 1
+        output_img = np.zeros((height, width, channels), np.uint8)
+        j = 0
+        for y in range(0, width):
+            i = height - 1
+            for x in range(0, height):
+                output_img[i, j] = img[x, y]
+                i += 1
+            j += 1
         return output_img
 
     def mirror_vertical(self, img):
         height, width, channels = img.shape
-        output_img = np.zeros((width, height, channels), np.uint8)
-        x = width
-        for i in range(0, width):
-            y = height
-            for j in range(0, height):
-                output_img[i,j] = img[x,y]
-                y -= 1
-            x -= 1
+        output_img = np.zeros((height, width, channels), np.uint8)
+        j = 0
+        for y in range(0, width):
+            i = height - 1
+            for x in range(0, height):
+                output_img[i, j] = img[x, y]
+                i -= 1
+            j += 1
         return output_img
 
     def rotate_90(self, img):
+        """
+        iterator directions:
+        +x ^ +y = +i ^ -j
+        """
         height, width, channels = img.shape
         output_img = np.zeros((height, width, channels), np.uint8)
-        x = width - 1
-        for i in range(0, width):
-            y = 0
-            for j in range(0, height):
-                output_img[x,y] = img[i,j]
-                y += 1
-            y -= 1
+        j = 0
+        for y in range(0, width):
+            i = height - 1
+            for x in range(0, height):
+                output_img[i, j] = img[x,y]
+                i += 1
+            j += 1
         return output_img
 
     def rotate_minus_90(self, img):
         print("nothing")
 
     def rotate_180(self, img):
-        print("nothing")
+        """
+        FINAL
+        """
+        height, width, channels = img.shape
+        output_img = np.zeros((height, width, channels), np.uint8)
+        j = width - 1
+        for y in range(0, width):
+            i = height - 1
+            for x in range(0, height):
+                output_img[i, j] = img[x, y]
+                i -= 1
+            j -= 1
+        return output_img
