@@ -40,22 +40,15 @@ class image_processor():
         print("Wrote flipped image to " + self.output_path)
 
     def mirror_horizontal(self, img):
-        """
-        FINAL
-        img[x,y]
-        output_img[i,j]
-        iterator directions:
-        +x ^ +y = +i ^ -j
-        """
         height, width, channels = img.shape
         output_img = np.zeros((height, width, channels), np.uint8)
-        j = 0
+        j = width - 1
         for y in range(0, width):
-            i = height - 1
+            i = 0
             for x in range(0, height):
                 output_img[i, j] = img[x, y]
                 i += 1
-            j += 1
+            j -= 1
         return output_img
 
     def mirror_vertical(self, img):
@@ -71,28 +64,30 @@ class image_processor():
         return output_img
 
     def rotate_90(self, img):
-        """
-        iterator directions:
-        +x ^ +y = +i ^ -j
-        """
         height, width, channels = img.shape
-        output_img = np.zeros((height, width, channels), np.uint8)
+        output_img = np.zeros((width, height, channels), np.uint8)
         j = 0
         for y in range(0, width):
-            i = height - 1
+            i = 0
             for x in range(0, height):
-                output_img[i, j] = img[x,y]
+                output_img[j, i] = img[x, y]
                 i += 1
             j += 1
         return output_img
 
     def rotate_minus_90(self, img):
-        print("nothing")
+        height, width, channels = img.shape
+        output_img = np.zeros((width, height, channels), np.uint8)
+        j = width - 1
+        for y in range(0, width):
+            i = 0
+            for x in range(0, height):
+                output_img[j, i] = img[x, y]
+                i += 1
+            j -= 1
+        return output_img
 
     def rotate_180(self, img):
-        """
-        FINAL
-        """
         height, width, channels = img.shape
         output_img = np.zeros((height, width, channels), np.uint8)
         j = width - 1
